@@ -1,6 +1,5 @@
-<p>Back-End do sistema web de Gerenciamento de Quadras com QR Codes</p>
-<p>o Front-End vai ser feito em React!
-<img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
+<p>- Back-End do sistema web de Gerenciamento de Quadras com QR Codes</p><img src="https://nestjs.com/img/logo-small.svg" width="20" alt="Nest Logo" />
+<p>- o Front-End vai ser feito em React!
 
 ## Descrição
 Um sistema web inovador projetado para facilitar o gerenciamento e a utilização de quadras esportivas na sua região. Utilizando QR codes e a API do Google Maps, nosso sistema permite que os usuários registrem e monitorem a utilização das quadras de maneira prática e eficiente.
