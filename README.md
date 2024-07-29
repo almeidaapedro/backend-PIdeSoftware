@@ -1,73 +1,36 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<p>Back-End do sistema web de Gerenciamento de Quadras com QR Codes</p>
+<p>o Front-End vai ser feito em React!
+<img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
+Um sistema web inovador projetado para facilitar o gerenciamento e a utilização de quadras esportivas na sua região. Utilizando QR codes e a API do Google Maps, nosso sistema permite que os usuários registrem e monitorem a utilização das quadras de maneira prática e eficiente.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Com esse sistema, administradores podem facilmente acompanhar o status de cada quadra, enquanto os usuários podem verificar a disponibilidade e registrar seu uso simplesmente escaneando um QR code com seus dispositivos móveis.
 
-## Description
+## Tecnologias Instaladas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<ul>
+  <li>Backend: Nest.js - Framework Node.js para construção de aplicações escaláveis e eficientes.</li>
+  <li>Banco de Dados: MySQL - Sistema de gerenciamento de banco de dados relacional.</li>
+  <li>Autenticação: JWT (JSON Web Tokens) - Sistema de autenticação seguro.</li>
+  <li>QR Codes: Biblioteca qrcode - Geração e leitura de QR codes.</li>
+  <li>Mapas: API do Google Maps - Integração para visualização de localizações.</li>
+</ul>
 
-## Installation
+## Funcionalidades
 
-```bash
-$ npm install
-```
+<ul>
+  <li>Registro e Monitoramento de Quadras: Registre a utilização das quadras esportivas escaneando QR codes exclusivos.</li>
+  <li>Visualização de Mapa: Integração com a API do Google Maps para visualização das quadras disponíveis na região.</li>
+  <li>Autenticação Segura: Sistema de autenticação utilizando JWT (JSON Web Tokens) para garantir a segurança dos dados dos usuários.</li>
+  <li>Geração e Leitura de QR Codes: Utilização de QR codes para uma experiência de usuário fluida e eficiente.</li>
+  <li>Gerenciamento de Status em Tempo Real: Monitore a disponibilidade das quadras em tempo real.</li>
+</ul>
 
-## Running the app
+## Instalação
 
-```bash
-# development
-$ npm run start
+Pré-requisitos
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Node.js
+- NPM ou Yarn
+- MySQL
