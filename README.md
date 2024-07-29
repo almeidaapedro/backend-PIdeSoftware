@@ -1,4 +1,4 @@
-<p>- Back-End do sistema web de Gerenciamento de Quadras com QR Codes</p><img src="https://nestjs.com/img/logo-small.svg" width="20" alt="Nest Logo" />
+<p>- Back-End do sistema web de Gerenciamento de Quadras com QR Codes<img src="https://nestjs.com/img/logo-small.svg" width="50" alt="Nest Logo" /></p>
 <p>- o Front-End vai ser feito em React!
 
 ## Descrição
