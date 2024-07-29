@@ -1,7 +1,7 @@
 <h1>Documentação do Sistema web de Gereciamento de Quadras com QR Codes</h1>
 <ul>
   <li>
-    <p> Back-End do sistema web de Gerenciamento de Quadras<img src="https://nestjs.com/img/logo-small.svg" width="50" alt="Nest Logo" /></p>
+    <p> Back-End do sistema web de Gerenciamento de Quadras<img src="https://nestjs.com/img/logo-small.svg" width="50" alt="Nest Logo" /><img src="https://skillicons.dev/icons?i=mysql" width="50" alt="MySQL Logo"/></img></p>
   </li>
   <li>
     <p> O Front-End vai ser feito em React!
