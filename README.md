@@ -38,5 +38,5 @@ Com esse sistema, administradores podem facilmente acompanhar o status de cada q
 Pré-requisitos
 
 - Node.js
-- NPM ou Yarn
+- NPM
 - MySQL
