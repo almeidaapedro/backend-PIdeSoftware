@@ -10,7 +10,7 @@ import { AppService } from './app.service';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'root',
       database: 'db_sportmap',
       entities: [],
       synchronize: true,
