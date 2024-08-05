@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
+import { QuadraModule } from './quadra/quadra.module';
+import { Quadra } from './quadra/entities/quadra.entity';
 
 @Module({
   imports: [
@@ -14,10 +16,11 @@ import { UsuarioModule } from './usuario/usuario.module';
       username: 'root',
       password: 'root',
       database: 'db_sportmap',
-      entities: [Usuario],
+      entities: [Usuario, Quadra],
       synchronize: true,
     }),
     UsuarioModule,
+    QuadraModule,
   ],
   controllers: [AppController],
   providers: [AppService],

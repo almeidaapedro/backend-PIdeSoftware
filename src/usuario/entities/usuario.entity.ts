@@ -1,5 +1,6 @@
 import { IsEmail, IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Quadra } from "../../quadra/entities/quadra.entity";
 
 @Entity({name: "tb_usuarios"})
 export class Usuario{
@@ -18,4 +19,7 @@ export class Usuario{
     @IsNotEmpty()
     @Column({length: 255, nullable: false})
     public senha: string
+    
+    @OneToMany(() => Quadra, (quadra) => quadra.usuario)
+    public quadras: Quadra[];
 }
