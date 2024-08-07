@@ -11,6 +11,14 @@ export class UsuarioService {
     private readonly usuarioRepository: Repository<Usuario>,
   ) {}
 
+  async findByEmail(email: string): Promise<Usuario | undefined> {
+    return this.usuarioRepository.findOne({ where: { email } });
+  }
+
+  async findById(id: number): Promise<Usuario | undefined> {
+    return this.usuarioRepository.findOneBy({ id });
+  }
+  
   async findAll(): Promise<Usuario[]> {
     return await this.usuarioRepository.find();
   }
@@ -19,8 +27,9 @@ export class UsuarioService {
     return await this.usuarioRepository.findOne(id);
   }
 
-  async create(usuario: Usuario): Promise<Usuario> {
-    return await this.usuarioRepository.save(usuario);
+  async create(usuarioData: Partial<Usuario>): Promise<Usuario> {
+    const usuario = this.usuarioRepository.create(usuarioData);
+    return this.usuarioRepository.save(usuario);
   }
 
   async update(id: number, usuario: Usuario): Promise<Usuario> {

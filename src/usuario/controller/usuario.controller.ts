@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../entities/usuario.entity';
 
+import * as bcrypt from 'bcrypt';
+import { CriarUsuarioDto } from '../../cadastro/create-usuario.dto';
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -17,8 +19,10 @@ export class UsuarioController {
     return this.usuarioService.findOne(id);
   }
 
-  @Post()
-  async create(@Body() usuario: Usuario): Promise<Usuario> {
+  @Post('criar')
+  async create(@Body() createUsuarioDto: CriarUsuarioDto) {
+    const hashedPassword = await bcrypt.hash(createUsuarioDto.senha, 10);
+    const usuario = { ...createUsuarioDto, senha: hashedPassword };
     return this.usuarioService.create(usuario);
   }
 

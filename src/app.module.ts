@@ -6,6 +6,7 @@ import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
 import { QuadraModule } from './quadra/quadra.module';
 import { Quadra } from './quadra/entities/quadra.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { Quadra } from './quadra/entities/quadra.entity';
     }),
     UsuarioModule,
     QuadraModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
