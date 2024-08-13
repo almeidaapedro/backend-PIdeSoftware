@@ -23,8 +23,8 @@ export class UsuarioService {
     return await this.usuarioRepository.find();
   }
 
-  async findOne(id): Promise<Usuario> {
-    return await this.usuarioRepository.findOne(id);
+  async findOne(id: number): Promise<Usuario | undefined> {
+    return this.usuarioRepository.findOneBy({ id });
   }
 
   async create(usuarioData: Partial<Usuario>): Promise<Usuario> {

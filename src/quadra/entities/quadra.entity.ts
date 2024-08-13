@@ -21,6 +21,9 @@ export class Quadra {
   @Column({ default: false })
   public ocupada: boolean;
 
-  @ManyToOne(() => Usuario, (usuario) => usuario.quadras)
-  public usuario: Usuario;
+  @ManyToOne(() => Usuario, usuario => usuario.quadras)
+  usuario: Usuario;
+  
+  @Column({ nullable: true })
+  qrCodeUrl?: string;
 }
