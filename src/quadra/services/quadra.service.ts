@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Quadra } from '../entities/quadra.entity';
 import { CreateQuadraDto } from '../../cadastro/create-quadra.dto';
 import { UpdateQuadraDto } from '../update-quadra.dto';
+import { GoogleMapsService } from '../../googlemaps/services/google-maps.service';
 
 
 
@@ -13,7 +14,12 @@ export class QuadraService {
   constructor(
     @InjectRepository(Quadra)
     private readonly quadraRepository: Repository<Quadra>,
+    private readonly googleMapsService: GoogleMapsService
   ) {}
+
+  async createQuadraWithGeocode(address: string) {
+    const geocodeData = await this.googleMapsService.getGeocode(address);
+  }
 
   async create(createQuadraDto: CreateQuadraDto): Promise<Quadra> {
     const quadra = this.quadraRepository.create(createQuadraDto);

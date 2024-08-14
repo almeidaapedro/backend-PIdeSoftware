@@ -27,6 +27,11 @@ export class QuadraController {
   }
 
   @Post()
+  async createQuadraComGeocode(@Body('address') address: string) {
+    return this.quadraService.createQuadraWithGeocode(address);
+  }
+
+  @Post()
   async create(@Body() createQuadraDto: CreateQuadraDto): Promise<QuadraResponseDto> {
     const { usuarioId, ...quadraData } = createQuadraDto;
     const usuario = await this.usuarioService.findOne(usuarioId);

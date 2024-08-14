@@ -7,6 +7,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { QuadraModule } from './quadra/quadra.module';
 import { Quadra } from './quadra/entities/quadra.entity';
 import { AuthModule } from './auth/auth.module';
+import { GoogleMapsModule } from './googlemaps/google-maps.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
     UsuarioModule,
     QuadraModule,
     AuthModule,
+    GoogleMapsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
