@@ -1,15 +1,18 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Usuario } from '../../usuario/entities/usuario.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'tb_quadras' })
 export class Quadra {
   @PrimaryGeneratedColumn()
+  @ApiProperty()
   public id: number;
 
   @Column({ length: 255, nullable: false })
   public nome: string;
 
   @Column({ type: 'text', nullable: true })
+  @ApiProperty()
   public descricao: string;
 
   @Column({ type: 'float', nullable: false })
