@@ -9,22 +9,14 @@ import { Quadra } from './quadra/entities/quadra.entity';
 import { AuthModule } from './auth/auth.module';
 import { GoogleMapsModule } from './googlemaps/google-maps.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProdService } from './data/services/prod.service';
 
 @Module({
   imports: [
-    // ConfigModule.forRoot({
-    //   isGlobal: true,
-    //   envFilePath: '.env',
-    // }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'db_sportmap',
-      entities: [Usuario, Quadra],
-      synchronize: true,
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+	    useClass: ProdService,
+      imports: [ConfigModule],
     }),
     UsuarioModule,
     QuadraModule,
