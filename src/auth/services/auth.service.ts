@@ -6,6 +6,9 @@ import { LoginDto } from '../../login/login.dto';
 
 @Injectable()
 export class AuthService {
+  register(registerDto: RegisterDto) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private readonly usuarioService: UsuarioService,
     private readonly jwtService: JwtService,

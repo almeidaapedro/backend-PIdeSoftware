@@ -5,6 +5,8 @@ import { UsuarioModule } from '../usuario/usuario.module';
 import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
+import { jwtConstants } from './constants/jwt.constants';
+import { AuthController } from './controller/auth.controller';
 
 
 @Module({
@@ -12,10 +14,12 @@ import { JwtAuthGuard } from './guard/jwt-auth.guard';
     UsuarioModule,
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret: jwtConstants.secret,
       signOptions: { expiresIn: '1h' },
     }),
+    UsuarioModule,
   ],
+  controllers: [AuthController],
   providers: [AuthService, JwtStrategy, JwtAuthGuard],
   exports: [AuthService],
 })
