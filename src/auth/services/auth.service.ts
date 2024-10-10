@@ -7,6 +7,9 @@ import axios from 'axios';
 
 @Injectable()
 export class AuthService {
+  generateToken(user: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private readonly usuarioService: UsuarioService,
     private readonly jwtService: JwtService,
