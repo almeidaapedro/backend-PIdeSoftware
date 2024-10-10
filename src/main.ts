@@ -19,7 +19,12 @@ async function bootstrap() {
   process.env.TZ = '-03:00';
 
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors()
+  app.enableCors({
+    origin: ['http://localhost:3000', 'http://localhost:5173'], // Permitir múltiplos origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Métodos permitidos
+    credentials: true, // Permitir envio de cookies e credenciais
+  });
+
   await app.listen(3000);;
 }
 bootstrap();

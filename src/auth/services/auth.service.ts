@@ -3,10 +3,13 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsuarioService } from '../../usuario/services/usuario.service';
 import { LoginDto } from '../../login/login.dto';
-import { CriarUsuarioDto } from '../../cadastro/create-usuario.dto';
+import axios from 'axios';
 
 @Injectable()
 export class AuthService {
+  generateToken(user: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private readonly usuarioService: UsuarioService,
     private readonly jwtService: JwtService,
@@ -30,5 +33,16 @@ export class AuthService {
       return result;
     }
     return null;
+  }
+
+  async cadastrarUsuario(userData: any) {
+    try {
+      const response = await axios.post('https://backend-pidesoftware.onrender.com/usuarios/cadastrar', userData);
+      return response.data;
+    } catch (error) {
+      // Lidar com erro aqui
+      console.error('Erro ao cadastrar usuário:', error);
+      throw error;
+    }
   }
 }
