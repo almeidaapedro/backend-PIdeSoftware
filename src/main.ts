@@ -19,7 +19,9 @@ async function bootstrap() {
   process.env.TZ = '-03:00';
 
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors()
+  app.enableCors({origin: 'http://localhost:5173/', // ou o domínio do seu frontend
+    credentials: true,
+  });
   await app.listen(3000);;
 }
 bootstrap();
