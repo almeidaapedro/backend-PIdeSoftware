@@ -5,7 +5,7 @@ import { Usuario } from '../entities/usuario.entity';
 import * as bcrypt from 'bcrypt';
 import { CriarUsuarioDto } from '../../cadastro/create-usuario.dto';
 
-@Controller('usuarios')
+@Controller('/usuarios')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 

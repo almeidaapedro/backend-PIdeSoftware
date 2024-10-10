@@ -8,7 +8,7 @@ import { QrCodeService } from '../../qrcode/services/qrcode.service';
 
 
 
-@Controller('quadras')
+@Controller('/quadras')
 export class QuadraController {
   constructor(
     private readonly quadraService: QuadraService,
