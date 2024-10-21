@@ -1,37 +1,37 @@
-import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UsuarioService } from '../services/usuario.service';
+import { Usuario } from '../entities/usuario.entity';
 import * as bcrypt from 'bcrypt';
-import { JwtService } from '@nestjs/jwt';
+import { CriarUsuarioDto } from '../../cadastro/create-usuario.dto';
 
-@Controller('auth')
-export class AuthController {
-  constructor(
-    private readonly usuarioService: UsuarioService,
-    private readonly jwtService: JwtService,
-  ) {}
+@Controller('usuarios')
+export class UsuarioController {
+    constructor(private readonly usuarioService: UsuarioService) {}
 
-  @Post('login')
-  async login(@Body() loginDto: { email: string, senha: string }) {
-    const { email, senha } = loginDto;
-    
-    // Buscar o usuário pelo email
-    const usuario = await this.usuarioService.findByEmail(email);
-    if (!usuario) {
-      throw new UnauthorizedException('Credenciais inválidas');
+    @Get()
+    async findAll(): Promise<Usuario[]> {
+        return this.usuarioService.findAll();
     }
 
-    // Verificar a senha
-    const isPasswordValid = await bcrypt.compare(senha, usuario.senha);
-    if (!isPasswordValid) {
-      throw new UnauthorizedException('Credenciais inválidas');
+    @Get(':id')
+    async findOne(@Param('id') id: number): Promise<Usuario> {
+        return this.usuarioService.findOne(id);
     }
 
-    // Gerar o token JWT
-    const payload = { sub: usuario.id, email: usuario.email };
-    const token = this.jwtService.sign(payload);
+    @Post('criar')
+    async create(@Body() createUsuarioDto: CriarUsuarioDto) {
+        const hashedPassword = await bcrypt.hash(createUsuarioDto.senha, 10);
+        const usuario = { ...createUsuarioDto, senha: hashedPassword };
+        return this.usuarioService.create(usuario);
+    }
 
-    return {
-      access_token: token,
-    };
-  }
+    @Put(':id')
+    async update(@Param('id') id: number, @Body() usuario: Usuario): Promise<Usuario> {
+        return this.usuarioService.update(id, usuario);
+    }
+
+    @Delete(':id')
+    async remove(@Param('id') id: number): Promise<void> {
+        return this.usuarioService.remove(id);
+    }
 }
