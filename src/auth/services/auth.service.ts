@@ -1,48 +1,44 @@
+// auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { UsuarioService } from '../../usuario/services/usuario.service';
-import { LoginDto } from '../../login/login.dto';
-import axios from 'axios';
+
+interface Usuario {
+  id: number;
+  email: string;
+  senha: string;
+}
 
 @Injectable()
 export class AuthService {
-  generateToken(user: any) {
-    throw new Error('Method not implemented.');
-  }
-  constructor(
-    private readonly usuarioService: UsuarioService,
-    private readonly jwtService: JwtService,
-  ) {}
-  
-  async login(loginDto: LoginDto) {
-    const usuario = await this.usuarioService.findByEmail(loginDto.email);
-    if (usuario && await bcrypt.compare(loginDto.senha, usuario.senha)) {
-      const payload = { email: usuario.email, sub: usuario.id };
-      return {
-        access_token: this.jwtService.sign(payload),
-      };
-    }
-    return { message: 'Invalid credentials' };
-  }
+  private users: Usuario[] = []; // Simulação de banco de dados
 
-  async validateUser(email: string, password: string): Promise<any> {
-    const usuario = await this.usuarioService.findByEmail(email);
-    if (usuario && await bcrypt.compare(password, usuario.senha)) {
-      const { senha, ...result } = usuario;
-      return result;
+  constructor(private jwtService: JwtService) {}
+
+  async validateUser(email: string, senha: string): Promise<Usuario | null> {
+    const user = this.users.find(user => user.email === email);
+    if (user && await bcrypt.compare(senha, user.senha)) {
+      return user;
     }
     return null;
   }
 
-  async cadastrarUsuario(userData: any) {
-    try {
-      const response = await axios.post('https://backend-pidesoftware.onrender.com/usuarios/cadastrar', userData);
-      return response.data;
-    } catch (error) {
-      // Lidar com erro aqui
-      console.error('Erro ao cadastrar usuário:', error);
-      throw error;
-    }
+  async registerUser(email: string, senha: string): Promise<Usuario> {
+    const hashedSenha = await bcrypt.hash(senha, 10);
+    const newUser: Usuario = {
+      id: this.users.length + 1,
+      email,
+      senha: hashedSenha,
+    };
+    this.users.push(newUser);
+    return newUser;
+  }
+
+  async generateToken(user: Usuario) {
+    const payload = { email: user.email, sub: user.id };
+    return {
+      token: this.jwtService.sign(payload),
+      // Adicione outras informações necessárias
+    };
   }
 }
