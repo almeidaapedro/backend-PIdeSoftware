@@ -37,9 +37,6 @@ export class UsuarioController {
     if (!passwordIsValid) {
         throw new Error('Senha inválida');
     }
-
-    // Aqui você pode gerar um token ou retornar o que for necessário
-    return { token: 'token_gerado' }; // Substitua por sua lógica de geração de token
 }
 
     @Put(':id')
